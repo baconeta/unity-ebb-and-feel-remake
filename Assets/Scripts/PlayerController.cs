@@ -10,15 +10,13 @@ public class PlayerController : MonoBehaviour
     private float moveVertical;
 
     private Rigidbody2D rB2D;
-
-    // Start is called before the first frame update
+    
     private void Start()
     {
         rB2D = gameObject.GetComponent<Rigidbody2D>();
         isJumping = false;
     }
-
-    // Update is called once per frame
+    
     private void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -63,5 +61,10 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = true;
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log("player left screen");
     }
 }
