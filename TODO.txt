@@ -1,4 +1,3 @@
-player does not stick to platforms 
 Add breaking platforms
 Add a global sanity
 Rebuild level
@@ -6,7 +5,6 @@ Add start splash screen
 Add creatures
 Finish player animations
 Add left/right movement
-While in air, ignore platform hitboxes on all but feet
 
 Build level 2 and 3
 Add items 
