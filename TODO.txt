@@ -1,4 +1,4 @@
-Add moving platforms
+player does not stick to platforms 
 Add breaking platforms
 Add a global sanity
 Rebuild level
