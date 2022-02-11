@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
     private Vector3 _startLocation;
+    public float fallingBoostPower;
 
     private Rigidbody2D rB2D;
 
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (isJumping && rB2D.velocity.y < 0)
         {
-            rB2D.velocity += Vector2.up * Physics2D.gravity.y * 1.5f * Time.deltaTime;
+            rB2D.velocity += Vector2.up * Physics2D.gravity.y * (fallingBoostPower-1) * Time.fixedDeltaTime;
         }
     }
 
