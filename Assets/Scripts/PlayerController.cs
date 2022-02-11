@@ -11,14 +11,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 _startLocation;
 
     private Rigidbody2D rB2D;
-    
+
     private void Start()
     {
         rB2D = gameObject.GetComponent<Rigidbody2D>();
         isJumping = false;
         _startLocation = transform.position;
     }
-    
+
     private void Update()
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             moveVertical = Input.GetAxisRaw("Vertical");
         }
-        
+
         if (isJumping)
         {
             moveVertical = 0f;
