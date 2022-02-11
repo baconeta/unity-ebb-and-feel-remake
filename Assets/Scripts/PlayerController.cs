@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
 
             rB2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
         }
+
+        if (isJumping && rB2D.velocity.y < 0)
+        {
+            rB2D.velocity += Vector2.up * Physics2D.gravity.y * 1.5f * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
