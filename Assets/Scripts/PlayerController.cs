@@ -1,57 +1,56 @@
-using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
-    private bool isJumping;
-    private float moveHorizontal;
-    private float moveVertical;
+    private bool _isJumping;
+    private float _moveHorizontal;
+    private float _moveVertical;
     private Vector3 _startLocation;
     public float fallingBoostPower;
 
-    private Rigidbody2D rB2D;
+    private Rigidbody2D _rB2D;
 
     private void Start()
     {
-        rB2D = gameObject.GetComponent<Rigidbody2D>();
-        isJumping = false;
+        _rB2D = gameObject.GetComponent<Rigidbody2D>();
+        _isJumping = false;
         _startLocation = transform.position;
     }
 
     private void Update()
     {
-        moveHorizontal = Input.GetAxisRaw("Horizontal");
-        if (!isJumping && Input.GetKeyDown(KeyCode.UpArrow))
+        _moveHorizontal = Input.GetAxisRaw("Horizontal");
+        if (!_isJumping && Input.GetKeyDown(KeyCode.UpArrow))
         {
-            moveVertical = Input.GetAxisRaw("Vertical");
+            _moveVertical = Input.GetAxisRaw("Vertical");
         }
 
-        if (isJumping)
+        if (_isJumping)
         {
-            moveVertical = 0f;
+            _moveVertical = 0f;
         }
     }
 
     private void FixedUpdate()
     {
-        if (moveHorizontal > 0.01f || moveHorizontal < -0.01f)
+        if (_moveHorizontal > 0.01f || _moveHorizontal < -0.01f)
         {
-            rB2D.AddForce(new Vector2(moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
+            _rB2D.AddForce(new Vector2(_moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
         }
 
-        if (!isJumping && (moveVertical > 0.01f || moveVertical < -0.01f))
+        if (!_isJumping && (_moveVertical > 0.01f || _moveVertical < -0.01f))
         {
             // need to zero any lingering y velocity for jump height to be consistent
-            rB2D.velocity = new Vector2(rB2D.velocity.x, 0f);
+            _rB2D.velocity = new Vector2(_rB2D.velocity.x, 0f);
 
-            rB2D.AddForce(new Vector2(0f, moveVertical * jumpForce), ForceMode2D.Impulse);
+            _rB2D.AddForce(new Vector2(0f, _moveVertical * jumpForce), ForceMode2D.Impulse);
         }
 
-        if (isJumping && rB2D.velocity.y < 0)
+        if (_isJumping && _rB2D.velocity.y < 0)
         {
-            rB2D.velocity += Vector2.up * Physics2D.gravity.y * (fallingBoostPower-1) * Time.fixedDeltaTime;
+            _rB2D.velocity += Vector2.up * (Physics2D.gravity.y * (fallingBoostPower-1) * Time.fixedDeltaTime);
         }
     }
 
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Platform"))
         {
-            isJumping = false;
+            _isJumping = false;
         }
     }
 
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Platform"))
         {
-            isJumping = true;
+            _isJumping = true;
         }
     }
 
