@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
     private float moveHorizontal;
     private float moveVertical;
+    private Vector3 _startLocation;
 
     private Rigidbody2D rB2D;
     
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         rB2D = gameObject.GetComponent<Rigidbody2D>();
         isJumping = false;
+        _startLocation = transform.position;
     }
     
     private void Update()
@@ -65,6 +67,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Debug.Log("player left screen");
+        // reset player position
+        transform.position = _startLocation;
+
+        // todo add sanity reset too once implemented
     }
 }
