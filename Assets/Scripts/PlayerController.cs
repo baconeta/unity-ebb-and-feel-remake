@@ -60,6 +60,11 @@ public class PlayerController : MonoBehaviour
         {
             _isJumping = false;
         }
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            //RESET FUNCTION TBD
+            transform.position = _startLocation;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

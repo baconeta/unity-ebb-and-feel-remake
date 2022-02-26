@@ -1,7 +1,97 @@
 fileFormatVersion: 2
 guid: 917c1c9846d577946bda063c2ec0bef2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2912119229092256709
+    second: enemy_facing_right_0
+  - first:
+      213: 1028092925041158646
+    second: enemy_facing_right_1
+  - first:
+      213: -5332745323522167077
+    second: enemy_facing_right_2
+  - first:
+      213: -8532300211320126971
+    second: enemy_facing_right_3
+  - first:
+      213: -6869401625533328866
+    second: enemy_facing_right_4
+  - first:
+      213: 1322372339819405533
+    second: enemy_facing_right_5
+  - first:
+      213: 2723399806357796883
+    second: enemy_facing_right_6
+  - first:
+      213: -160956980462799012
+    second: enemy_facing_right_7
+  - first:
+      213: 5120278568529852070
+    second: enemy_facing_right_8
+  - first:
+      213: 645698585053570973
+    second: enemy_facing_right_9
+  - first:
+      213: 9112731911262906763
+    second: enemy_facing_right_10
+  - first:
+      213: -2386866832406993116
+    second: enemy_facing_right_11
+  - first:
+      213: 9197834562321788766
+    second: enemy_facing_right_12
+  - first:
+      213: 4487914437319554041
+    second: enemy_facing_right_13
+  - first:
+      213: -5609283891549938045
+    second: enemy_facing_right_14
+  - first:
+      213: -2625848152324579471
+    second: enemy_facing_right_15
+  - first:
+      213: -5687111146577742660
+    second: enemy_facing_right_16
+  - first:
+      213: -1603712188652930880
+    second: enemy_facing_right_17
+  - first:
+      213: 4721913266466644089
+    second: enemy_facing_right_18
+  - first:
+      213: -3685628656833645409
+    second: enemy_facing_right_19
+  - first:
+      213: 5995785005913379360
+    second: enemy_facing_right_20
+  - first:
+      213: 9018103143107841798
+    second: enemy_facing_right_21
+  - first:
+      213: 3666752547240166905
+    second: enemy_facing_right_22
+  - first:
+      213: -7436722541584620516
+    second: enemy_facing_right_23
+  - first:
+      213: -6415422278790549305
+    second: enemy_facing_right_24
+  - first:
+      213: 2181194714141281024
+    second: enemy_facing_right_25
+  - first:
+      213: -9011988223725160088
+    second: enemy_facing_right_26
+  - first:
+      213: 2134266863834569991
+    second: enemy_facing_right_27
+  - first:
+      213: -6365864139718205518
+    second: enemy_facing_right_28
+  - first:
+      213: 3883209267872626181
+    second: enemy_facing_right_29
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,7 +122,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -41,7 +131,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -68,7 +158,31 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -77,7 +191,637 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: enemy_facing_right_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 106
+        width: 68
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b342f5e7df21697d0800000000000000
+      internalID: -2912119229092256709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 108
+        width: 67
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9ab297115844e00800000000000000
+      internalID: 1028092925041158646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 109
+        width: 67
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdee5d1e1684ef5b0800000000000000
+      internalID: -5332745323522167077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 110
+        width: 66
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5020643f92e279980800000000000000
+      internalID: -8532300211320126971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 111
+        width: 66
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1258920e9bfaa0a0800000000000000
+      internalID: -6869401625533328866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_5
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 112
+        width: 65
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd0ecb703a20a5210800000000000000
+      internalID: 1322372339819405533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_6
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 114
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318f257d1b57bc520800000000000000
+      internalID: 2723399806357796883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_7
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 115
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c573563aa7a24cdf0800000000000000
+      internalID: -160956980462799012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_8
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 116
+        width: 66
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6744cca32ee0740800000000000000
+      internalID: 5120278568529852070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_9
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 116
+        width: 66
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d97271a217bf5f800800000000000000
+      internalID: 645698585053570973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_10
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 116
+        width: 66
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b892138546de67e70800000000000000
+      internalID: 9112731911262906763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_11
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 116
+        width: 67
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4272838134520eed0800000000000000
+      internalID: -2386866832406993116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_12
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 114
+        width: 67
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f200e5dc545af70800000000000000
+      internalID: 9197834562321788766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_13
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 111
+        width: 67
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f377ca1766484e30800000000000000
+      internalID: 4487914437319554041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_14
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 108
+        width: 68
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38e58d71502d722b0800000000000000
+      internalID: -5609283891549938045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 68
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17fd39e840d1f8bd0800000000000000
+      internalID: -2625848152324579471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_16
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 2
+        width: 67
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4b1163b825311b0800000000000000
+      internalID: -5687111146577742660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_17
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 3
+        width: 67
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8b061e2487eb9e0800000000000000
+      internalID: -1603712188652930880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_18
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 4
+        width: 66
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970e2fb191b978140800000000000000
+      internalID: 4721913266466644089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_19
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 6
+        width: 66
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f943e6f83440adcc0800000000000000
+      internalID: -3685628656833645409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_20
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 7
+        width: 65
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 022941322be453350800000000000000
+      internalID: 5995785005913379360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_21
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 8
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60fc6c8570db62d70800000000000000
+      internalID: 9018103143107841798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_22
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 9
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f54281b30ce2e230800000000000000
+      internalID: 3666752547240166905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_23
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 10
+        width: 66
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1465b7ff347bc890800000000000000
+      internalID: -7436722541584620516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_24
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 10
+        width: 66
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0ff848d67d7f6a0800000000000000
+      internalID: -6415422278790549305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_25
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 10
+        width: 67
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00bc95a3909254e10800000000000000
+      internalID: 2181194714141281024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_26
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 9
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869bbd4457cfee280800000000000000
+      internalID: -9011988223725160088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_27
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 7
+        width: 67
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d1fb2a7607e9d10800000000000000
+      internalID: 2134266863834569991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_28
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 3
+        width: 68
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bfd2bfea48e7a7a0800000000000000
+      internalID: -6365864139718205518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_facing_right_29
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 0
+        width: 68
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5067d08414ee3e530800000000000000
+      internalID: 3883209267872626181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
