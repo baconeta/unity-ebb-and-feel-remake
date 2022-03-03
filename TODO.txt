@@ -1,8 +1,6 @@
-Add breaking platforms
 Add a global sanity
 Rebuild level
 Add start splash screen
-Add creatures
 Finish player animations
 Add left/right movement
 
