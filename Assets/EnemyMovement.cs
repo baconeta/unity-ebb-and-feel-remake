@@ -46,8 +46,6 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_leftBounds);
-        Debug.Log(_rightBounds);
 
         if (_isSleeping)
         {
