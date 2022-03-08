@@ -147,7 +147,7 @@ MonoBehaviour:
   baseTimeToBreak: 1
   platformShakeStrength: 0.2
   platformShakeDecay: 0.005
-  basePlatformFallSpeed: 0.5
+  basePlatformFallSpeed: 0.2
 --- !u!82 &7133202309002778671
 AudioSource:
   m_ObjectHideFlags: 0
