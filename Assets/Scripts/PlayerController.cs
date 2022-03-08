@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator _anim;
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
-    private static readonly int FacingLeft = Animator.StringToHash("facingLeft");
+    private static readonly int IsJumping = Animator.StringToHash("isJumping");
 
     private void Start()
     {
@@ -23,25 +23,31 @@ public class PlayerController : MonoBehaviour
         _isJumping = false;
         _startLocation = transform.position;
         _anim = GetComponent<Animator>();
-        _anim.SetBool(FacingLeft, false);
+        _anim.SetBool(IsJumping, false);
         _anim.SetBool(IsRunning, false);
     }
 
     private void Update()
     {
-        // Grab input data and manage player state
-        _moveHorizontal = Input.GetAxisRaw("Horizontal");
-        if (!_isJumping && Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            _moveVertical = Input.GetAxisRaw("Vertical");
-        }
-
+        // Already jumping
         if (_isJumping)
         {
             _moveVertical = 0f;
-            // Here we must also return to avoid further code calls
-            return;
+            _anim.SetBool(IsJumping, true);
         }
+
+        else
+        {
+            // Begin jumping
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _moveVertical = Input.GetAxisRaw("Vertical");
+            }
+
+            _anim.SetBool(IsJumping, false);
+        }
+
+        _moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         if (_moveHorizontal == 0)
         {
@@ -53,8 +59,10 @@ public class PlayerController : MonoBehaviour
         Transform playerTransform = transform;
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            _anim.SetBool(IsRunning, true);
-            _anim.SetBool(FacingLeft, false);
+            if (!_isJumping)
+            {
+                _anim.SetBool(IsRunning, true);
+            }
 
             Vector3 transformLocalScale = playerTransform.localScale;
             transformLocalScale.x = 1;
@@ -62,8 +70,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            _anim.SetBool(IsRunning, true);
-            _anim.SetBool(FacingLeft, true);
+            if (!_isJumping)
+            {
+                _anim.SetBool(IsRunning, true);
+            }
+
             Vector3 transformLocalScale = playerTransform.localScale;
             transformLocalScale.x = -1;
             playerTransform.localScale = transformLocalScale;
