@@ -1,6 +1,5 @@
 Add a global sanity
 Rebuild level
-Add start splash screen
 
 Build level 2 and 3
 Add items 
