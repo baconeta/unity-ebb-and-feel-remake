@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,15 +13,23 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rB2D;
 
+    private Animator _anim;
+    private static readonly int IsRunning = Animator.StringToHash("isRunning");
+    private static readonly int FacingLeft = Animator.StringToHash("facingLeft");
+
     private void Start()
     {
         _rB2D = gameObject.GetComponent<Rigidbody2D>();
         _isJumping = false;
         _startLocation = transform.position;
+        _anim = GetComponent<Animator>();
+        _anim.SetBool(FacingLeft, false);
+        _anim.SetBool(IsRunning, false);
     }
 
     private void Update()
     {
+        // Grab input data and manage player state
         _moveHorizontal = Input.GetAxisRaw("Horizontal");
         if (!_isJumping && Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -30,6 +39,38 @@ public class PlayerController : MonoBehaviour
         if (_isJumping)
         {
             _moveVertical = 0f;
+            // Here we must also return to avoid further code calls
+            return;
+        }
+
+        if (_moveHorizontal == 0)
+        {
+            _anim.SetBool(IsRunning, false);
+            return;
+        }
+
+        // X-axis animations and PlayerFacing direction
+        Transform playerTransform = transform;
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            _anim.SetBool(IsRunning, true);
+            _anim.SetBool(FacingLeft, false);
+
+            Vector3 transformLocalScale = playerTransform.localScale;
+            transformLocalScale.x = 1;
+            playerTransform.localScale = transformLocalScale;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            _anim.SetBool(IsRunning, true);
+            _anim.SetBool(FacingLeft, true);
+            Vector3 transformLocalScale = playerTransform.localScale;
+            transformLocalScale.x = -1;
+            playerTransform.localScale = transformLocalScale;
+        }
+        else
+        {
+            _anim.SetBool(IsRunning, false);
         }
     }
 
@@ -50,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
         if (_isJumping && _rB2D.velocity.y < 0)
         {
-            _rB2D.velocity += Vector2.up * (Physics2D.gravity.y * (fallingBoostPower-1) * Time.fixedDeltaTime);
+            _rB2D.velocity += Vector2.up * (Physics2D.gravity.y * (fallingBoostPower - 1) * Time.fixedDeltaTime);
         }
     }
 
@@ -60,6 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             _isJumping = false;
         }
+
         if (col.gameObject.CompareTag("Enemy"))
         {
             //RESET FUNCTION TBD
