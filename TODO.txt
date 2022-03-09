@@ -1,10 +1,11 @@
 Add tree
-Add bushes
 Add items
 Add inventory
 Rebuild level
+Add next level object
 
 Build level 2 and 3
 Add statistics
 Add story into game
+Add mute button globally
 Add replay screen showing statistics
