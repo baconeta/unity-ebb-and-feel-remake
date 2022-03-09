@@ -31,10 +31,12 @@ public class SanityManager : MonoBehaviour
 
         if (_currentTimer < 1.0f) return;
 
+        _currentTimer = 0.0f;
+
         if (_sanityDraining)
         {
-            _currentSanity -= sanityDrainPerSecond;
-            if (_currentSanity > minDrainSanity)
+            AddSanity(-sanityDrainPerSecond);
+            if (_currentSanity < minDrainSanity)
             {
                 _currentSanity = minDrainSanity;
                 _sanityDraining = false;
@@ -54,10 +56,16 @@ public class SanityManager : MonoBehaviour
         {
             _currentSanity = minSanity;
         }
+
+        if (_currentSanity > minDrainSanity)
+        {
+            _sanityDraining = true;
+        }
     }
 
     public float GetSanity()
     {
+        Debug.Log(_currentSanity);
         return _currentSanity;
     }
 }
