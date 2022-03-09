@@ -3,23 +3,50 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public float sleepTime;
-    [Range(0f, 0.25f)] public float basePlatformSpeed;
+    [Range(0f, 2.0f)] public float basePlatformSpeed;
     private Vector3 _origin;
     public Vector3 targetLocation;
     private bool _isSleeping;
     private float _timeSlept;
     private bool _isReturning;
+    private bool _playerConnected;
+
+    private SanityManager _gameSanityManager;
+
+    public float lowSanitySpeedup = 2.0f;
+    public float highSanitySpeedup = 0.0f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _origin = transform.position;
         _isReturning = false;
+        _gameSanityManager = FindObjectOfType<SanityManager>();
+        _playerConnected = false;
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
+        float platformSpeedThisFrame = basePlatformSpeed;
+        SanityManager.SanityLevel sanity = _gameSanityManager.GetSanityLevel();
+
+        switch (sanity)
+        {
+            case SanityManager.SanityLevel.Low:
+                platformSpeedThisFrame *= lowSanitySpeedup;
+                break;
+            case SanityManager.SanityLevel.High:
+                platformSpeedThisFrame *= highSanitySpeedup;
+                if (_playerConnected)
+                {
+                    platformSpeedThisFrame = basePlatformSpeed;
+                }
+                break;
+            case SanityManager.SanityLevel.Medium:
+                break;
+        }
+
         if (_isSleeping)
         {
             return;
@@ -29,13 +56,13 @@ public class MovingPlatform : MonoBehaviour
         {
             //move towards target position
             Vector3 smoothPosition = Vector3.MoveTowards(transform.position, targetLocation,
-                basePlatformSpeed * Time.fixedDeltaTime);
+                platformSpeedThisFrame * Time.fixedDeltaTime);
             transform.position = smoothPosition;
         }
         else
         {
             Vector3 smoothPosition =
-                Vector3.MoveTowards(transform.position, _origin, basePlatformSpeed * Time.fixedDeltaTime);
+                Vector3.MoveTowards(transform.position, _origin, platformSpeedThisFrame * Time.fixedDeltaTime);
             transform.position = smoothPosition;
         }
 
@@ -52,20 +79,22 @@ public class MovingPlatform : MonoBehaviour
         _isReturning = !_isReturning;
         _isSleeping = false;
     }
-    
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             col.transform.SetParent(transform);
+            _playerConnected = true;
         }
     }
-    
+
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             col.transform.SetParent(null);
+            _playerConnected = false;
         }
     }
 }
