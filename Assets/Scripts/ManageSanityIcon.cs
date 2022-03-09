@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ManageSanityIcon : MonoBehaviour
@@ -8,9 +6,6 @@ public class ManageSanityIcon : MonoBehaviour
     public Sprite highSanity;
     public Sprite mediumSanity;
     public Sprite lowSanity;
-
-    public float highSanityMinimum = 75;
-    public float lowSanityMaximum = 25;
 
     private SpriteRenderer _iconSpriteRenderer;
 
@@ -29,18 +24,17 @@ public class ManageSanityIcon : MonoBehaviour
     private void Update()
     {
         SanityManager.SanityLevel currentSanity = sanityManager.GetSanityLevel();
-        if (currentSanity == SanityManager.SanityLevel.High)
+        switch (currentSanity)
         {
-            _iconSpriteRenderer.sprite = highSanity;
-        }
-
-        else if (currentSanity == SanityManager.SanityLevel.Low)
-        {
-            _iconSpriteRenderer.sprite = lowSanity;
-        }
-        else if (currentSanity == SanityManager.SanityLevel.Medium)
-        {
-            _iconSpriteRenderer.sprite = mediumSanity;
+            case SanityManager.SanityLevel.High:
+                _iconSpriteRenderer.sprite = highSanity;
+                break;
+            case SanityManager.SanityLevel.Low:
+                _iconSpriteRenderer.sprite = lowSanity;
+                break;
+            case SanityManager.SanityLevel.Medium:
+                _iconSpriteRenderer.sprite = mediumSanity;
+                break;
         }
     }
 }
