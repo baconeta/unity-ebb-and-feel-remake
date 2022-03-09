@@ -7,20 +7,30 @@ public class SanityManager : MonoBehaviour
     public float maxSanity = 100.0f;
     public float minSanity = 0;
     public float startingSanity = 75.0f;
-    private float _currentSanity;
+    public float currentSanity;
     public float sanityDrainPerSecond = 1.0f;
     public float minDrainSanity = 25.0f;
     private bool _sanityDraining;
+    public float highSanityMinimum = 75;
+    public float lowSanityMaximum = 25;
+
 
     private float _currentTimer;
+
+    public enum SanityLevel
+    {
+        High,
+        Medium,
+        Low
+    }
 
     // Start is called before the first frame update
     private void Start()
     {
         // global sanity manager
-        _currentSanity = startingSanity;
+        currentSanity = startingSanity;
         _currentTimer = 0.0f;
-        _sanityDraining = _currentSanity > minDrainSanity;
+        _sanityDraining = currentSanity > minDrainSanity;
     }
 
     // Update is called once per frame
@@ -36,36 +46,57 @@ public class SanityManager : MonoBehaviour
         if (_sanityDraining)
         {
             AddSanity(-sanityDrainPerSecond);
-            if (_currentSanity < minDrainSanity)
+            if (currentSanity < minDrainSanity)
             {
-                _currentSanity = minDrainSanity;
+                currentSanity = minDrainSanity;
                 _sanityDraining = false;
+            }
+        }
+        else
+        {
+            if (currentSanity > minDrainSanity)
+            {
+                _sanityDraining = true;
             }
         }
     }
 
     public void AddSanity(float sanityToAdd)
     {
-        _currentSanity += sanityToAdd;
-        if (_currentSanity > maxSanity)
+        currentSanity += sanityToAdd;
+        if (currentSanity > maxSanity)
         {
-            _currentSanity = maxSanity;
+            currentSanity = maxSanity;
         }
 
-        if (_currentSanity < minSanity)
+        if (currentSanity < minSanity)
         {
-            _currentSanity = minSanity;
+            currentSanity = minSanity;
         }
 
-        if (_currentSanity > minDrainSanity)
+        if (currentSanity > minDrainSanity)
         {
             _sanityDraining = true;
         }
     }
 
-    public float GetSanity()
+    public float GetSanityValue()
     {
-        Debug.Log(_currentSanity);
-        return _currentSanity;
+        return currentSanity;
+    }
+
+    public SanityLevel GetSanityLevel()
+    {
+        if (currentSanity >= highSanityMinimum)
+        {
+            return SanityLevel.High;
+        }
+
+        if (currentSanity <= lowSanityMaximum)
+        {
+            return SanityLevel.Low;
+        }
+
+        return SanityLevel.Medium;
     }
 }

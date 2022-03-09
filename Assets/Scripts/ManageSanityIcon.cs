@@ -28,17 +28,17 @@ public class ManageSanityIcon : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        float currentSanity = sanityManager.GetSanity();
-        if (currentSanity >= highSanityMinimum)
+        SanityManager.SanityLevel currentSanity = sanityManager.GetSanityLevel();
+        if (currentSanity == SanityManager.SanityLevel.High)
         {
             _iconSpriteRenderer.sprite = highSanity;
         }
 
-        else if (currentSanity <= lowSanityMaximum)
+        else if (currentSanity == SanityManager.SanityLevel.Low)
         {
             _iconSpriteRenderer.sprite = lowSanity;
         }
-        else
+        else if (currentSanity == SanityManager.SanityLevel.Medium)
         {
             _iconSpriteRenderer.sprite = mediumSanity;
         }
