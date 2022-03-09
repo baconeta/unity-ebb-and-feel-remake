@@ -11,10 +11,19 @@ public class EnemyMovement : MonoBehaviour
     public float sleepTime;
     private static readonly int IsMovingRight = Animator.StringToHash("IsMovingRight");
     private Animator _anim;
+    private bool _isDisabled = true;
+    private SpriteRenderer _spriteRenderer;
+    private BoxCollider2D _boxCollider2D;
+
+    private SanityManager _gameSanityManager;
+    public float lowSanitySpeedupValue = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _gameSanityManager = FindObjectOfType<SanityManager>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
         _isMovingRight = true;
         _anim = GetComponent<Animator>();
 
@@ -46,6 +55,22 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float movementSpeedThisFrame = baseMovementSpeed;
+        SanityManager.SanityLevel sanity = _gameSanityManager.GetSanityLevel();
+
+        switch (sanity)
+        {
+            case SanityManager.SanityLevel.Low:
+                movementSpeedThisFrame *= lowSanitySpeedupValue;
+                break;
+            case SanityManager.SanityLevel.High:
+                MakeInvisible();
+                return;
+            case SanityManager.SanityLevel.Medium:
+                if (_isDisabled) MakeVisible();
+                break;
+        }
+
 
         if (_isSleeping)
         {
@@ -56,13 +81,13 @@ public class EnemyMovement : MonoBehaviour
         {
             //move towards target position
             Vector3 smoothPosition = Vector3.MoveTowards(transform.position, _rightBounds,
-                baseMovementSpeed * Time.fixedDeltaTime);
+                movementSpeedThisFrame * Time.fixedDeltaTime);
             transform.position = smoothPosition;
         }
         else
         {
             Vector3 smoothPosition =
-                Vector3.MoveTowards(transform.position, _leftBounds, baseMovementSpeed * Time.fixedDeltaTime);
+                Vector3.MoveTowards(transform.position, _leftBounds, movementSpeedThisFrame * Time.fixedDeltaTime);
             transform.position = smoothPosition;
         }
 
@@ -80,5 +105,19 @@ public class EnemyMovement : MonoBehaviour
         _anim.SetBool(IsMovingRight, _isMovingRight);
 
         _isSleeping = false;
+    }
+
+    void MakeInvisible()
+    {
+        _isDisabled = true;
+        _spriteRenderer.enabled = false;
+        _boxCollider2D.enabled = false;
+    }
+
+    void MakeVisible()
+    {
+        _isDisabled = false;
+        _spriteRenderer.enabled = true;
+        _boxCollider2D.enabled = true;
     }
 }
