@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sleepTime: 2
-  basePlatformSpeed: 0.1
+  basePlatformSpeed: 1.5
   targetLocation: {x: 26.08, y: -4.1, z: -1}
+  lowSanitySpeedup: 3
+  highSanitySpeedup: 0
 --- !u!61 &7359118601547872152
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -123,9 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c253c77a7fcb0eb49b7ce71272588a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sleepTime: 2
+  sleepTime: 1.5
   basePlatformSpeed: 0.067
   targetLocation: {x: -5.34, y: -0.75, z: 0}
+  lowSanitySpeedup: 3
+  highSanitySpeedup: 0
 --- !u!251 &-8967563609283728838
 PlatformEffector2D:
   m_ObjectHideFlags: 0
