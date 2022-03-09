@@ -1,10 +1,10 @@
-Add a global sanity
+Add tree
+Add bushes
+Add items
+Add inventory
 Rebuild level
 
 Build level 2 and 3
-Add items 
-Add inventory
 Add statistics
-Add level blocks for sanity (bushes and trees)
 Add story into game
 Add replay screen showing statistics

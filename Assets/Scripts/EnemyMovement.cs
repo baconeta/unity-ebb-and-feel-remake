@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     public float lowSanitySpeedupValue = 2.0f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameSanityManager = FindObjectOfType<SanityManager>();
@@ -53,7 +53,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float movementSpeedThisFrame = baseMovementSpeed;
         SanityManager.SanityLevel sanity = _gameSanityManager.GetSanityLevel();
@@ -99,7 +99,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void ChangeDirection()
+    private void ChangeDirection()
     {
         _isMovingRight = !_isMovingRight;
         _anim.SetBool(IsMovingRight, _isMovingRight);
@@ -107,14 +107,14 @@ public class EnemyMovement : MonoBehaviour
         _isSleeping = false;
     }
 
-    void MakeInvisible()
+    private void MakeInvisible()
     {
         _isDisabled = true;
         _spriteRenderer.enabled = false;
         _boxCollider2D.enabled = false;
     }
 
-    void MakeVisible()
+    private void MakeVisible()
     {
         _isDisabled = false;
         _spriteRenderer.enabled = true;
