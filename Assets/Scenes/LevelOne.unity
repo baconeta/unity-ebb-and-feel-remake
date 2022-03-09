@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalRotation.w
@@ -486,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1255,7 +1255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1318,6 +1318,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSanity: 100
   minSanity: 0
+  startingSanity: 75
+  sanityDrainPerSecond: 1
+  minDrainSanity: 25
 --- !u!4 &1448857573
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1742,7 +1745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1255714611917528655, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
       propertyPath: m_LocalRotation.w
