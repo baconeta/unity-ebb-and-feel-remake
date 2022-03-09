@@ -3,6 +3,8 @@ Add items
 Add inventory
 Rebuild level
 Add next level object
+Add sanity sounds
+Add footstep sounds
 
 Build level 2 and 3
 Add statistics
