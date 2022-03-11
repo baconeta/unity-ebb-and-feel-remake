@@ -14,11 +14,10 @@ public class TreeController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _canPass = true;
+        _canPass = false;
         _gameSanityManager = FindObjectOfType<SanityManager>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
-
     }
 
     // Update is called once per frame
@@ -26,11 +25,12 @@ public class TreeController : MonoBehaviour
     {
         SanityManager.SanityLevel sanityLevel = _gameSanityManager.GetSanityLevel();
 
-        if (sanityLevel == SanityManager.SanityLevel.Low && !_canPass)
+        if (!_canPass && sanityLevel == SanityManager.SanityLevel.Low)
         {
             MakePassable();
         }
-        else if (_canPass)
+        else if (_canPass && (sanityLevel == SanityManager.SanityLevel.Medium ||
+                              sanityLevel == SanityManager.SanityLevel.High))
         {
             MakeSolid();
         }
