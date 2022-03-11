@@ -14,7 +14,7 @@ public class TreeController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _canPass = false;
+        _canPass = true;
         _gameSanityManager = FindObjectOfType<SanityManager>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
