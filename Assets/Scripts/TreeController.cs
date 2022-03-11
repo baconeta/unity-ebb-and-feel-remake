@@ -26,7 +26,7 @@ public class TreeController : MonoBehaviour
     {
         SanityManager.SanityLevel sanityLevel = _gameSanityManager.GetSanityLevel();
 
-        if (sanityLevel == SanityManager.SanityLevel.Low)
+        if (sanityLevel == SanityManager.SanityLevel.Low && !_canPass)
         {
             MakePassable();
         }
