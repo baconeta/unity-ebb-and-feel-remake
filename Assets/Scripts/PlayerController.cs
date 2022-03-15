@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,8 +11,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 _startLocation;
     public float fallingBoostPower;
 
-    private Rigidbody2D _rB2D;
+    public bool isHoldingPotion;
+    private int _heldPotionSanityToAdd;
 
+    private Rigidbody2D _rB2D;
+    private SanityManager _gameSanityManager;
     private Animator _anim;
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
@@ -19,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rB2D = gameObject.GetComponent<Rigidbody2D>();
+        _gameSanityManager = FindObjectOfType<SanityManager>();
         _isJumping = false;
         _startLocation = transform.position;
         _anim = GetComponent<Animator>();
@@ -117,6 +122,31 @@ public class PlayerController : MonoBehaviour
             //RESET FUNCTION TBD
             transform.position = _startLocation;
         }
+
+        if (col.gameObject.CompareTag("Potion"))
+        {
+            if (!isHoldingPotion)
+            {
+                PickupPotion(col.gameObject);
+            }
+        }
+    }
+
+    private void PickupPotion(GameObject colGameObject)
+    {
+        isHoldingPotion = true;
+        colGameObject.GetComponent<SpriteRenderer>().enabled = false;
+        PotionController potionController = colGameObject.GetComponent<PotionController>();
+        _heldPotionSanityToAdd = potionController.sanityEffectValue;
+        if (!potionController.isSanityBoost)
+        {
+            _heldPotionSanityToAdd *= -1;
+        }
+
+        Debug.Log("Got a potion");
+        Debug.Log("Will add " + _heldPotionSanityToAdd + " sanity when used.");
+        // Make potion show in HUD?
+        Destroy(colGameObject);
     }
 
     private void OnTriggerExit2D(Collider2D other)
