@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float fallingBoostPower;
 
     public bool isHoldingPotion;
-    private int _heldPotionSanityToAdd;
+    public int heldPotionSanityToAdd;
 
     private Rigidbody2D _rB2D;
     private SanityManager _gameSanityManager;
@@ -137,15 +137,15 @@ public class PlayerController : MonoBehaviour
     private void PickupPotion(PotionController potion)
     {
         isHoldingPotion = true;
-        _heldPotionSanityToAdd = potion.sanityEffectValue;
+        heldPotionSanityToAdd = potion.sanityEffectValue;
 
         if (!potion.isSanityBoost)
         {
-            _heldPotionSanityToAdd *= -1;
+            heldPotionSanityToAdd *= -1;
         }
 
         Debug.Log("Got a potion");
-        Debug.Log("Will add " + _heldPotionSanityToAdd + " sanity when used.");
+        Debug.Log("Will add " + heldPotionSanityToAdd + " sanity when used.");
         // Make potion show in HUD?
     }
 
