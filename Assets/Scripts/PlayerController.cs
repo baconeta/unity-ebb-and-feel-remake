@@ -127,18 +127,19 @@ public class PlayerController : MonoBehaviour
         {
             if (!isHoldingPotion)
             {
-                PickupPotion(col.gameObject);
+                PotionController potionController = col.gameObject.GetComponent<PotionController>();
+                PickupPotion(potionController);
+                potionController.Pickup();
             }
         }
     }
 
-    private void PickupPotion(GameObject colGameObject)
+    private void PickupPotion(PotionController potion)
     {
         isHoldingPotion = true;
-        colGameObject.GetComponent<SpriteRenderer>().enabled = false;
-        PotionController potionController = colGameObject.GetComponent<PotionController>();
-        _heldPotionSanityToAdd = potionController.sanityEffectValue;
-        if (!potionController.isSanityBoost)
+        _heldPotionSanityToAdd = potion.sanityEffectValue;
+
+        if (!potion.isSanityBoost)
         {
             _heldPotionSanityToAdd *= -1;
         }
@@ -146,7 +147,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Got a potion");
         Debug.Log("Will add " + _heldPotionSanityToAdd + " sanity when used.");
         // Make potion show in HUD?
-        Destroy(colGameObject);
     }
 
     private void OnTriggerExit2D(Collider2D other)
