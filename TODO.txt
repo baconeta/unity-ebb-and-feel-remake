@@ -8,5 +8,6 @@ Add statistics
 Add story into game
 Add mute button globally
 Add replay screen showing statistics
+Fix WASD
 
 Add touch screen support?
