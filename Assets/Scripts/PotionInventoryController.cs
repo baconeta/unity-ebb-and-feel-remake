@@ -39,6 +39,7 @@ public class PotionInventoryController : MonoBehaviour
         else if (_isShowingPotion)
         {
             _spriteRenderer.sprite = _noPotionSprite;
+            _isShowingPotion = false;
         }
     }
 }

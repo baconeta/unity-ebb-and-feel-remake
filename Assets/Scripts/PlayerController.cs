@@ -33,6 +33,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            if (isHoldingPotion)
+            {
+                UsePotion();
+            }
+        }
+
         // Already jumping
         if (_isJumping)
         {
@@ -87,6 +95,12 @@ public class PlayerController : MonoBehaviour
         {
             _anim.SetBool(IsRunning, false);
         }
+    }
+
+    private void UsePotion()
+    {
+        isHoldingPotion = false;
+        _gameSanityManager.AddSanity(heldPotionSanityToAdd);
     }
 
     private void FixedUpdate()
