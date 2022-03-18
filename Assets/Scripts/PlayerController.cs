@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,10 +12,13 @@ public class PlayerController : MonoBehaviour
 
     public bool isHoldingPotion;
     public int heldPotionSanityToAdd;
+    public AudioClip[] landingSounds;
+    [Range(0.0f, 1.0f)] public float landingVolume;
 
     private Rigidbody2D _rB2D;
     private SanityManager _gameSanityManager;
     private Animator _anim;
+    private AudioSource _animationSoundPlayer;
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
 
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         _rB2D = gameObject.GetComponent<Rigidbody2D>();
         _gameSanityManager = FindObjectOfType<SanityManager>();
+        _animationSoundPlayer = GetComponent<AudioSource>();
         _isJumping = false;
         _startLocation = transform.position;
         _anim = GetComponent<Animator>();
@@ -128,6 +131,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Platform"))
         {
+            PlayLandingSound();
             _isJumping = false;
         }
 
@@ -157,10 +161,6 @@ public class PlayerController : MonoBehaviour
         {
             heldPotionSanityToAdd *= -1;
         }
-
-        Debug.Log("Got a potion");
-        Debug.Log("Will add " + heldPotionSanityToAdd + " sanity when used.");
-        // Make potion show in HUD?
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -177,5 +177,15 @@ public class PlayerController : MonoBehaviour
         transform.position = _startLocation;
 
         // todo add sanity reset too once implemented
+    }
+
+    public void PlayFootstepSound()
+    {
+        _animationSoundPlayer.Play();
+    }
+
+    private void PlayLandingSound()
+    {
+        _animationSoundPlayer.PlayOneShot(landingSounds[Random.Range(0, landingSounds.Length)], 0.5f);
     }
 }
