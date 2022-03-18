@@ -1,6 +1,5 @@
 Rebuild level
 Add sanity sounds
-Add footstep sounds
 Add next level object
 
 Build level 2 and 3
