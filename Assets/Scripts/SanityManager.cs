@@ -13,6 +13,12 @@ public class SanityManager : MonoBehaviour
     private bool _sanityDraining;
     public float highSanityMinimum = 75;
     public float lowSanityMaximum = 25;
+    private bool _hasPlayedGoingSaneSound;
+    private bool _hasPlayedGoingInsaneSound;
+    private SanityLevel _currentSanityLevel;
+    public AudioClip goingSaneSound;
+    public AudioClip goingInsaneSound;
+    private AudioSource _sanityAudioSource;
 
 
     private float _currentTimer;
@@ -31,6 +37,7 @@ public class SanityManager : MonoBehaviour
         currentSanity = startingSanity;
         _currentTimer = 0.0f;
         _sanityDraining = currentSanity > minDrainSanity;
+        _sanityAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,6 +65,36 @@ public class SanityManager : MonoBehaviour
             {
                 _sanityDraining = true;
             }
+        }
+
+        CalculateSanityLevel();
+    }
+
+    private void CalculateSanityLevel()
+    {
+        if (currentSanity >= highSanityMinimum)
+        {
+            if (!_hasPlayedGoingSaneSound)
+            {
+                _sanityAudioSource.PlayOneShot(goingSaneSound);
+                _hasPlayedGoingSaneSound = true;
+            }
+            _currentSanityLevel = SanityLevel.High;
+        }
+
+        else if (currentSanity <= lowSanityMaximum)
+        {
+            if (!_hasPlayedGoingInsaneSound)
+            {
+                _sanityAudioSource.PlayOneShot(goingInsaneSound);
+                _hasPlayedGoingInsaneSound = true;
+            }
+            _currentSanityLevel = SanityLevel.Low;
+        }
+
+        else
+        {
+            _currentSanityLevel = SanityLevel.Medium;
         }
     }
 
@@ -87,16 +124,6 @@ public class SanityManager : MonoBehaviour
 
     public SanityLevel GetSanityLevel()
     {
-        if (currentSanity >= highSanityMinimum)
-        {
-            return SanityLevel.High;
-        }
-
-        if (currentSanity <= lowSanityMaximum)
-        {
-            return SanityLevel.Low;
-        }
-
-        return SanityLevel.Medium;
+        return _currentSanityLevel;
     }
 }
