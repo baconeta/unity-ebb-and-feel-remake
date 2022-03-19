@@ -1,5 +1,4 @@
 Rebuild level
-Add next level object
 
 Build level 2 and 3
 Add statistics
