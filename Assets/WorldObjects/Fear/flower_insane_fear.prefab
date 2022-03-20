@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &577822023575797805
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207592, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659409784332207593, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6806f742546226244af0311934b7d4ef, type: 3}
+    - target: {fileID: 5659409784332207596, guid: e0893a54a629c154982bb4507ff85946, type: 3}
+      propertyPath: m_Name
+      value: flower_insane_fear
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0893a54a629c154982bb4507ff85946, type: 3}
