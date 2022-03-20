@@ -2,8 +2,7 @@ Rebuild level
 
 Build level 2 and 3
 Add statistics
-Add story into game
-Add mute button globally
+Add story into gameW
 Add replay screen showing statistics
 Fix WASD
 Fix landing on top of the trees.
