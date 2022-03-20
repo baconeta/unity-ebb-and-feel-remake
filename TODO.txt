@@ -2,7 +2,7 @@ Rebuild level
 
 Build level 2 and 3
 Add statistics
-Add story into gameW
+Add story into game
 Add replay screen showing statistics
 Fix WASD
 Fix landing on top of the trees.
