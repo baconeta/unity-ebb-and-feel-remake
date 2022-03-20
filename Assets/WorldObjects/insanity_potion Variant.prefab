@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1759004823068387223, guid: b5a45c68bfed9c543a28be0decdb03a7, type: 3}
       propertyPath: m_Name
-      value: insanity_potion
+      value: insanity_potion Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1759004823068387225, guid: b5a45c68bfed9c543a28be0decdb03a7, type: 3}
       propertyPath: m_Sprite
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1759004823068387226, guid: b5a45c68bfed9c543a28be0decdb03a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1759004823068387226, guid: b5a45c68bfed9c543a28be0decdb03a7, type: 3}
       propertyPath: m_LocalRotation.w
