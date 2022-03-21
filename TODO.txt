@@ -1,8 +1,9 @@
 Rebuild all levels
-Add statistics
 Add story into game
-Add end game
-Add replay screen showing statistics
+Add end game notification or message or something
+
+Add statistics
+Show stats on final screen
 
 Fix WASD
 Fix landing on top of the trees.
