@@ -1,10 +1,10 @@
-Rebuild level
-
-Build level 2 and 3
+Rebuild all levels
 Add statistics
 Add story into game
+Add end game
 Add replay screen showing statistics
+
 Fix WASD
 Fix landing on top of the trees.
 
-Add touch screen support?
+Add touch screen support
