@@ -143,6 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformForBounding: {fileID: 0}
-  baseMovementSpeed: 0.25
-  sleepTime: 1
-  lowSanitySpeedupValue: 2
+  baseMovementSpeed: 0.2
+  sleepTime: 1.5
+  lowSanitySpeedupValue: 1.5
