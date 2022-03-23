@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource _animationSoundPlayer;
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
+    private bool _isWaitingToDie;
 
     private void Start()
     {
@@ -174,9 +177,22 @@ public class PlayerController : MonoBehaviour
     private void OnBecameInvisible()
     {
         // reset player position
-        transform.position = _startLocation;
+        _isWaitingToDie = true;
+        Invoke(nameof(ResetPlayer), 2.0f);
+    }
 
+    private void ResetPlayer()
+    {
         // todo add sanity reset too once implemented
+        transform.position = _startLocation;
+    }
+
+    private void OnBecameVisible()
+    {
+        if (!_isWaitingToDie) return;
+
+        _isWaitingToDie = false;
+        CancelInvoke();
     }
 
     public void PlayFootstepSound()
