@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   insaneFlowers: 0
-  cooldownInSeconds: 1
-  sanityEffectPerCooldown: 15
+  cooldownInSeconds: 2
+  sanityEffectPerCooldown: 35
 --- !u!61 &4829520926414927268
 BoxCollider2D:
   m_ObjectHideFlags: 0

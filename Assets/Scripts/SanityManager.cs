@@ -3,12 +3,12 @@ using UnityEngine;
 public class SanityManager : MonoBehaviour
 {
     public float maxSanity = 100.0f;
-    public float minSanity = 0;
-    public float startingSanity = 75.0f;
+    public float minSanity = 0.0f;
+    public float startingSanity = 50.0f;
     public float currentSanity;
     public float sanityDrainPerSecond = 1.0f;
-    public float minDrainSanity = 25.0f;
-    private bool _sanityDraining;
+    public float sanityGainPerSecond = 1.0f;
+    public float targetNaturalSanity = 50.0f;
     public float highSanityMinimum = 75;
     public float lowSanityMaximum = 25;
     private bool _hasPlayedGoingSaneSound;
@@ -34,7 +34,6 @@ public class SanityManager : MonoBehaviour
         // global sanity manager
         currentSanity = startingSanity;
         _currentTimer = 0.0f;
-        _sanityDraining = currentSanity > minDrainSanity;
         _sanityAudioSource = GetComponent<AudioSource>();
     }
 
@@ -48,21 +47,13 @@ public class SanityManager : MonoBehaviour
 
         _currentTimer = 0.0f;
 
-        if (_sanityDraining)
+        if (currentSanity > targetNaturalSanity)
         {
             AddSanity(-sanityDrainPerSecond);
-            if (currentSanity < minDrainSanity)
-            {
-                currentSanity = minDrainSanity;
-                _sanityDraining = false;
-            }
         }
-        else
+        else if (currentSanity < targetNaturalSanity)
         {
-            if (currentSanity > minDrainSanity)
-            {
-                _sanityDraining = true;
-            }
+            AddSanity(sanityGainPerSecond);
         }
 
         CalculateSanityLevel();
@@ -107,11 +98,6 @@ public class SanityManager : MonoBehaviour
         if (currentSanity < minSanity)
         {
             currentSanity = minSanity;
-        }
-
-        if (currentSanity > minDrainSanity)
-        {
-            _sanityDraining = true;
         }
     }
 
