@@ -84,6 +84,8 @@ public class SanityManager : MonoBehaviour
         else
         {
             _currentSanityLevel = SanityLevel.Medium;
+            _hasPlayedGoingSaneSound = false;
+            _hasPlayedGoingInsaneSound = false;
         }
     }
 
