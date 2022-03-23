@@ -126,7 +126,7 @@ MonoBehaviour:
   sleepTime: 1.5
   basePlatformSpeed: 1.5
   targetLocation: {x: -5.34, y: -0.75, z: 0}
-  lowSanitySpeedup: 3
+  lowSanitySpeedup: 2
   highSanitySpeedup: 0
 --- !u!251 &-8967563609283728838
 PlatformEffector2D:

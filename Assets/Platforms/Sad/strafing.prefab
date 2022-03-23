@@ -100,7 +100,7 @@ MonoBehaviour:
   sleepTime: 2
   basePlatformSpeed: 1.5
   targetLocation: {x: 26.08, y: -4.1, z: -1}
-  lowSanitySpeedup: 3
+  lowSanitySpeedup: 2
   highSanitySpeedup: 0
 --- !u!61 &7359118601547872152
 BoxCollider2D:
