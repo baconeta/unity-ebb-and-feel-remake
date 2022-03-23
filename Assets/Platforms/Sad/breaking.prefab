@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7133202309002778672}
   - component: {fileID: 7133202309002778671}
   m_Layer: 0
-  m_Name: platform_breaking_sad
+  m_Name: breaking
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
