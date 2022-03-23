@@ -49,6 +49,8 @@ public class BreakingPlatform : MonoBehaviour
 
     private void StartBreaking()
     {
+        _isBreaking = true;
+        
         // shake
         _cameraShakeClass.MakeItShake();
         Shake();
@@ -72,7 +74,6 @@ public class BreakingPlatform : MonoBehaviour
             // start breaking platform
 
             StartBreaking();
-            _isBreaking = true;
         }
     }
 
