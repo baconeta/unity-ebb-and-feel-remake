@@ -185,12 +185,11 @@ public class PlayerController : MonoBehaviour
     {
         // reset player position
         _isWaitingToDie = true;
-        Invoke(nameof(ResetPlayer), 2.0f);
+        Invoke(nameof(ResetPlayer), 1.5f);
     }
 
     private void ResetPlayer()
     {
-        // todo add sanity reset too once implemented
         transform.position = _respawnLocation;
     }
 
