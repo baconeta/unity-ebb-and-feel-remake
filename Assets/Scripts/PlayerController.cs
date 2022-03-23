@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float _moveVertical;
     private Vector3 _startLocation;
     public float fallingBoostPower;
+    private Vector3 _respawnLocation;
 
     public bool isHoldingPotion;
     public int heldPotionSanityToAdd;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         _animationSoundPlayer = GetComponent<AudioSource>();
         _isJumping = false;
         _startLocation = transform.position;
+        _respawnLocation = _startLocation;
         _anim = GetComponent<Animator>();
         _anim.SetBool(IsJumping, false);
         _anim.SetBool(IsRunning, false);
@@ -140,8 +141,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.CompareTag("Enemy"))
         {
-            //RESET FUNCTION TBD
-            transform.position = _startLocation;
+            ResetPlayer();
         }
 
         if (col.gameObject.CompareTag("Potion"))
@@ -152,6 +152,13 @@ public class PlayerController : MonoBehaviour
                 PickupPotion(potionController);
                 potionController.Pickup();
             }
+        }
+
+        if (col.gameObject.CompareTag("Respawn"))
+        {
+            //Change respawn location
+            _respawnLocation = col.gameObject.transform.position;
+            Destroy(col.gameObject);
         }
     }
 
@@ -184,7 +191,7 @@ public class PlayerController : MonoBehaviour
     private void ResetPlayer()
     {
         // todo add sanity reset too once implemented
-        transform.position = _startLocation;
+        transform.position = _respawnLocation;
     }
 
     private void OnBecameVisible()
