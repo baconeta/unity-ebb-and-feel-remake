@@ -51,7 +51,7 @@ namespace PlayerNotifications
         {
             SetMessageAlpha(1f);
             _notificationTextBase.text = m;
-            // _notificationTextBase.enabled = true;
+            Debug.Log("new message.");
         }
 
         // This function is used to set the initial location of the notification message and
@@ -66,13 +66,13 @@ namespace PlayerNotifications
 
         public void ClearMessage(bool fadeMessageOut, float fadeMessageTime = 0.0f)
         {
-            // _notificationTextBase.text = "";
             if (fadeMessageOut)
             {
                 StartCoroutine(FadeOutMessage(fadeMessageTime));
             }
             else
             {
+                Debug.Log("clear message");
                 _notificationTextBase.text = "";
             }
         }
@@ -90,10 +90,17 @@ namespace PlayerNotifications
             {
                 float normalizedTime = t / duration;
                 SetMessageAlpha(Mathf.Lerp(1, 0, normalizedTime));
+
                 yield return null;
             }
 
+            Debug.Log("clear message on fade call");
             _notificationTextBase.text = "";
+        }
+
+        public void CancelFade()
+        {
+            StopAllCoroutines();
         }
     }
 }

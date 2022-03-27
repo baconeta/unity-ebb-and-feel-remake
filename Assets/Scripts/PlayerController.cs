@@ -1,4 +1,5 @@
 using PlayerNotifications;
+using UnityEditorInternal;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -65,7 +66,7 @@ public class PlayerController : MonoBehaviour
             // Begin jumping
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                nc.DisplayNotificationMessage("testing 123", 4.0f, true);
+                nc.DisplayNotificationMessage("testing 123", 1, true, 4.0f);
                 _moveVertical = Input.GetAxisRaw("Vertical");
             }
 
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
         Transform playerTransform = transform;
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            nc.DisplayNotificationMessage("hehe right xd", 2, true);
             if (!_isJumping)
             {
                 _anim.SetBool(IsRunning, true);

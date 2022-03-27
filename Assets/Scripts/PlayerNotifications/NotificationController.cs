@@ -31,9 +31,14 @@ namespace PlayerNotifications
         [Tooltip("Used in conjunction with doMessagesFadeOut, sets the time a message takes to fade to nothing.")]
         public float timeToFadeOutInSeconds;
 
-        private bool _isMessageOnScreen;
+        [Tooltip("Whether or not an un-played message (due to low priority) is counted as played.")]
+        public bool notDisplayedMessagesCountAsPlayed;
 
+        private bool _isMessageOnScreen;
         private readonly List<string> _alreadyPlayedMessages = new List<string>();
+
+        [Tooltip("The priority of the message currently being played. 0 if nothing is being played.")]
+        private int _currentMessagePriority;
 
         // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
@@ -41,17 +46,14 @@ namespace PlayerNotifications
         /// </summary>
         /// <param name="m">Message to display</param>
         /// <param name="timeToDisplay">How long should the message display for (seconds).</param>
+        /// <param name="messagePriority">The priority level of this message. 1 is highest.</param>
         /// <param name="canMessageBeReplayed">True if this message should only play once ever</param>
-        public void DisplayNotificationMessage(string m, float timeToDisplay = 0.0f, bool canMessageBeReplayed = false)
+        public void DisplayNotificationMessage(string m, int messagePriority, bool canMessageBeReplayed,
+            float timeToDisplay = 0.0f)
         {
             if (!playerNotificationObject)
             {
                 Debug.Log("No PlayerNotification Object was attached to the controller to handle messages.");
-                return;
-            }
-
-            if (_isMessageOnScreen)
-            {
                 return;
             }
 
@@ -63,15 +65,35 @@ namespace PlayerNotifications
                 }
             }
 
+            if (!IsMessageHigherPriorityThanCurrent(messagePriority))
+            {
+                if (notDisplayedMessagesCountAsPlayed)
+                {
+                    _alreadyPlayedMessages.Add(m);
+                }
+
+                return;
+            }
+
+            if (_isMessageOnScreen)
+            {
+                CancelInvoke();
+                StopAllCoroutines();
+                playerNotificationObject.CancelFade();
+                playerNotificationObject.ClearMessage(false);
+            }
+
             if (timeToDisplay == 0.0f)
             {
                 timeToDisplay = CalculateTimeToDisplay(m);
             }
 
             _isMessageOnScreen = true;
-            Invoke(nameof(ClearMessageFromScreen), timeToDisplay);
+            _currentMessagePriority = messagePriority;
             playerNotificationObject.DisplayNotificationMessage(m);
             _alreadyPlayedMessages.Add(m);
+
+            Invoke(nameof(ClearMessageFromScreen), timeToDisplay);
         }
 
         private float CalculateTimeToDisplay(string s)
@@ -104,6 +126,7 @@ namespace PlayerNotifications
                 return;
             }
 
+            _currentMessagePriority = 0;
             _isMessageOnScreen = false;
         }
 
@@ -111,8 +134,31 @@ namespace PlayerNotifications
         {
             //Wait for the specified delay time before continuing.
             yield return new WaitForSeconds(delayTime);
-
+            _currentMessagePriority = 0;
             _isMessageOnScreen = false;
+        }
+
+        /// <summary>
+        /// Determines whether or not a message can be played given its priority
+        /// level (1 is highest) compared to any already playing messages.
+        /// </summary>
+        /// <param name="messagePriority">The priority of the message to be checked.</param>
+        /// <returns></returns>
+        private bool IsMessageHigherPriorityThanCurrent(int messagePriority)
+        {
+            if (_currentMessagePriority < 0)
+            {
+                Debug.Log("Message priority should be a positive integer.");
+                return false;
+            }
+
+            if (_currentMessagePriority == 0)
+            {
+                // No message is being played
+                return true;
+            }
+
+            return messagePriority <= _currentMessagePriority;
         }
     }
 }
