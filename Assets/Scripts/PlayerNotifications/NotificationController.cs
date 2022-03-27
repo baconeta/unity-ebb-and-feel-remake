@@ -24,6 +24,11 @@ namespace PlayerNotifications
                 return;
             }
 
+            if (_isMessageOnScreen)
+            {
+                return;
+            }
+
             if (timeToDisplay == 0.0f)
             {
                 timeToDisplay = CalculateTimeToDisplay(m);
@@ -58,6 +63,7 @@ namespace PlayerNotifications
 
         private void ClearMessageFromScreen()
         {
+            _isMessageOnScreen = false;
             playerNotificationObject.ClearMessage();
         }
     }

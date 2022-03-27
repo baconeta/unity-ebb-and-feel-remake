@@ -37,7 +37,8 @@ namespace PlayerNotifications
         private void SetTextDefaults()
         {
             _notificationTextBase.alignment = TextAnchor.MiddleCenter;
-            _notificationTextBase.font = Font.CreateDynamicFontFromOSFont("LiberationSans", 30); // TODO generify
+            _notificationTextBase.font = Font.CreateDynamicFontFromOSFont("LiberationSans", 14); // TODO generify
+            _notificationTextBase.fontSize = 28;
         }
 
         public void DisplayNotificationMessage(string m)
