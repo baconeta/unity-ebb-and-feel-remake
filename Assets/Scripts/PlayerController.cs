@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
             // Begin jumping
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                BroadcastMessage("DisplayNotificationMessage", "message");
                 _moveVertical = Input.GetAxisRaw("Vertical");
             }
 
