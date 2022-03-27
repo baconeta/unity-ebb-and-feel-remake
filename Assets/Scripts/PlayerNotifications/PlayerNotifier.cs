@@ -12,19 +12,32 @@ namespace PlayerNotifications
 
         private void Start()
         {
+            ComponentSetup();
+            SetupCanvas();
+            SetTextDefaults();
+        }
+
+        private void ComponentSetup()
+        {
             // Ensure component is set up to display text on the screen
             _notificationTextBase = gameObject.AddComponent<Text>();
             _displayCanvas = gameObject.AddComponent<Canvas>();
+            _rectTransform = gameObject.GetComponent<RectTransform>();
+        }
 
+        private void SetupCanvas()
+        {
             // Should this be enabled to be set manually as well? TODO
             _displayCanvas.worldCamera = FindObjectOfType<Camera>();
+
             _displayCanvas.renderMode = RenderMode.WorldSpace;
-            _notificationTextBase.font = Font.CreateDynamicFontFromOSFont("LiberationSans", 20);
-            _displayCanvas.sortingOrder = 5;
+            _displayCanvas.sortingOrder = 5; // UI mode
+        }
 
-            _rectTransform = gameObject.GetComponent<RectTransform>();
-
+        private void SetTextDefaults()
+        {
             _notificationTextBase.alignment = TextAnchor.MiddleCenter;
+            _notificationTextBase.font = Font.CreateDynamicFontFromOSFont("LiberationSans", 30); // TODO generify
         }
 
         public void DisplayNotificationMessage(string m)
@@ -39,6 +52,11 @@ namespace PlayerNotifications
             transformPosition.x = x;
             transformPosition.y = y;
             _rectTransform.position = transformPosition;
+        }
+
+        public void ClearMessage()
+        {
+            _notificationTextBase.text = ""; 
         }
     }
 }

@@ -1,3 +1,4 @@
+using PlayerNotifications;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,8 +26,12 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private bool _isWaitingToDie;
 
+    private NotificationController nc;
+
     private void Start()
     {
+        nc = GetComponentInChildren<NotificationController>();
+        
         _rB2D = gameObject.GetComponent<Rigidbody2D>();
         _gameSanityManager = FindObjectOfType<SanityManager>();
         _animationSoundPlayer = GetComponent<AudioSource>();
@@ -60,7 +65,7 @@ public class PlayerController : MonoBehaviour
             // Begin jumping
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                BroadcastMessage("DisplayNotificationMessage", "message");
+                nc.DisplayNotificationMessage("testing 123", 5.0f);
                 _moveVertical = Input.GetAxisRaw("Vertical");
             }
 
