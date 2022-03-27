@@ -17,6 +17,8 @@ namespace PlayerNotifications
         [Tooltip("Put the PlayerNotifier object into the world and reference it here.")]
         public PlayerNotifier playerNotificationObject;
 
+        [Tooltip("Set true if you want this controller to track a gameObject." +
+                 "Make sure you set a tagToTrack for this object for scene persist functionality")]
         public bool doesTrackAnObjectOrPlayer;
 
         private GameObject _objectToFollow;
@@ -24,7 +26,7 @@ namespace PlayerNotifications
         [Tooltip("Optional object to track position of, i.e. a character, for message displaying")]
         public string tagToTrack;
 
-        [Tooltip("Offset for messages location from tracked player. Only used if doesTrackAnObjectOrPlayer.")]
+        [Tooltip("Offset for messages location from tracked player. Only used if doesMessageFollowController.")]
         public Vector3 messageOffsetLocation;
 
         [Tooltip(
