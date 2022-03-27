@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,10 @@ namespace PlayerNotifications
 
         [Tooltip("Whether or not an un-played message (due to low priority) is counted as played.")]
         public bool notDisplayedMessagesCountAsPlayed;
+
+        [Tooltip("Default Font Family")] public Font defaultFontForMessages;
+        [Tooltip("Default Font Color/Style")] public Color defaultMessageColor;
+        [Tooltip("Default Font Size")] public int defaultFontSize;
 
         private bool _isMessageOnScreen;
         private readonly List<string> _alreadyPlayedMessages = new List<string>();
@@ -114,6 +119,29 @@ namespace PlayerNotifications
             if (persistBetweenScenes)
             {
                 DontDestroyOnLoad(gameObject);
+            }
+        }
+
+        private void Start()
+        {
+            DefaultFontValues();
+        }
+
+        private void DefaultFontValues()
+        {
+            if (defaultFontSize != default)
+            {
+                playerNotificationObject.SetFontSize(defaultFontSize);
+            }
+
+            if (defaultMessageColor != default)
+            {
+                playerNotificationObject.SetFontColor(defaultMessageColor);
+            }
+
+            if (defaultFontForMessages != default)
+            {
+                playerNotificationObject.SetFontFamily(defaultFontForMessages);
             }
         }
 
