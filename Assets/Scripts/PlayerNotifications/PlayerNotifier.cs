@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace PlayerNotifications
         private Text _notificationTextBase;
         private Canvas _displayCanvas;
         private RectTransform _rectTransform;
+        private float _defaultAlphaValue = 1f;
 
         private void Start()
         {
@@ -43,13 +45,57 @@ namespace PlayerNotifications
         }
 
         /// <summary>
+        /// Set the size of the font in px.
+        /// </summary>
+        /// <param name="size">Size of the font in pixels</param>
+        public void SetFontSize(int size)
+        {
+            _notificationTextBase.fontSize = size;
+        }
+
+        /// <summary>
+        /// Set a font family with default px size.
+        /// </summary>
+        /// <param name="font">Font to set</param>
+        public void SetFontFamily(Font font)
+        {
+            try
+            {
+                _notificationTextBase.font = font;
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Font not valid or error setting font " + e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Sets the color and/or alpha values for the font.
+        /// </summary>
+        /// <param name="color"></param>
+        public void SetFontColor(Color color)
+        {
+            try
+            {
+                _defaultAlphaValue = color.a;
+                _notificationTextBase.color = color;
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Error setting color or alpha value." + e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Set and display a message on the Text object of this object.
         /// Call SetNotifierLocation() to set its world location.
         /// </summary>
         /// <param name="m">Message to display on-screen</param>
         public void DisplayNotificationMessage(string m)
         {
-            SetMessageAlpha(1f);
+            SetMessageAlpha(_defaultAlphaValue);
             _notificationTextBase.text = m;
             Debug.Log("new message.");
         }
