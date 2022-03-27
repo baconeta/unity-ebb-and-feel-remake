@@ -1,3 +1,4 @@
+using PlayerNotifications;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private bool _isWaitingToDie;
 
+    public NotificationController notificationController;
+
     private void Start()
     {
         _rB2D = gameObject.GetComponent<Rigidbody2D>();
@@ -36,6 +39,10 @@ public class PlayerController : MonoBehaviour
         _anim = GetComponent<Animator>();
         _anim.SetBool(IsJumping, false);
         _anim.SetBool(IsRunning, false);
+        if (notificationController == null)
+        {
+            notificationController = FindObjectOfType<NotificationController>();
+        }
     }
 
     private void Update()
