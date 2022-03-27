@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -121,25 +122,26 @@ namespace PlayerNotifications
 
         private void Update()
         {
-            if (doesMessageFollowController)
+            if (!_isMessageOnScreen) return;
+            if (!doesMessageFollowController) return;
+
+            Transform currentTransform = transform;
+
+            if (doesTrackAnObjectOrPlayer && _objectToFollow)
             {
-                Transform currentTransform = transform;
-
-                if (doesTrackAnObjectOrPlayer && _objectToFollow == null)
-                {
-                    // For example, when a new scene loads or an object is destroyed
-                    _objectToFollow = GameObject.FindGameObjectWithTag(tagToTrack);
-                }
-
-                if (doesTrackAnObjectOrPlayer && _objectToFollow)
+                if (_objectToFollow)
                 {
                     MoveControllerToObject(currentTransform);
                 }
-
-                currentTransform.position += messageOffsetLocation;
-
-                playerNotificationObject.SetNotifierLocation(currentTransform.position.x, currentTransform.position.y);
+                else
+                {
+                    // For example, when a new scene loads or an object ref is destroyed
+                    _objectToFollow = GameObject.FindGameObjectWithTag(tagToTrack);
+                }
             }
+
+            currentTransform.position += messageOffsetLocation;
+            playerNotificationObject.SetNotifierLocation(currentTransform.position.x, currentTransform.position.y);
         }
 
         private void MoveControllerToObject(Transform currentTransform)
@@ -161,6 +163,8 @@ namespace PlayerNotifications
         private void Start()
         {
             DefaultFontValues();
+
+            _objectToFollow = GameObject.FindGameObjectWithTag(tagToTrack);
         }
 
         private void DefaultFontValues()
