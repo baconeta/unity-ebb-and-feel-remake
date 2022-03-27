@@ -6,23 +6,41 @@
 // persistBetweenScenes enabled, otherwise place it in every scene where you will use it.
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerNotifications
 {
     public class NotificationController : MonoBehaviour
     {
+        [Tooltip("Put the PlayerNotifier object into the world and reference it here.")]
         public PlayerNotifier playerNotificationObject;
-        private bool _isMessageOnScreen;
+
+        [Tooltip(
+            "Set whether the message will follow the controller on message shown or controller object moved." +
+            "Otherwise, the message will be displayed at the PlayerNotifier world location.")]
         public bool doesMessageFollowController;
 
         [Tooltip("Enable to save non-repeating messages between levels.")]
         public bool persistBetweenScenes;
 
+        [Tooltip("Enable to have all future messages fade out. Callable from code if you want to change on the fly.")]
         public bool doMessagesFadeOut;
+
+        [Tooltip("Used in conjunction with doMessagesFadeOut, sets the time a message takes to fade to nothing.")]
         public float timeToFadeOutInSeconds;
 
-        public void DisplayNotificationMessage(string m, float timeToDisplay = 0.0f)
+        private bool _isMessageOnScreen;
+
+        private List<string> _alreadyPlayedMessages = new List<string>();
+
+        /// <summary>
+        /// Call this function (Broadcast or otherwise) to display a message in the world.
+        /// </summary>
+        /// <param name="m">Message to display</param>
+        /// <param name="timeToDisplay">How long should the message display for (seconds).</param>
+        /// <param name="canMessageBeReplayed">True if this message should only play once ever</param>
+        public void DisplayNotificationMessage(string m, float timeToDisplay = 0.0f, bool canMessageBeReplayed = false)
         {
             if (!playerNotificationObject)
             {
@@ -35,6 +53,14 @@ namespace PlayerNotifications
                 return;
             }
 
+            if (!canMessageBeReplayed)
+            {
+                if (_alreadyPlayedMessages.Contains(m))
+                {
+                    return;
+                }
+            }
+
             if (timeToDisplay == 0.0f)
             {
                 timeToDisplay = CalculateTimeToDisplay(m);
@@ -43,11 +69,11 @@ namespace PlayerNotifications
             _isMessageOnScreen = true;
             Invoke(nameof(ClearMessageFromScreen), timeToDisplay);
             playerNotificationObject.DisplayNotificationMessage(m);
+            _alreadyPlayedMessages.Add(m);
         }
 
         private float CalculateTimeToDisplay(string s)
         {
-            // Used for default timing
             return s.Length / 10.0f + 2.0f;
         }
 

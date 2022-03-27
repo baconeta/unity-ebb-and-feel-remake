@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,6 +42,11 @@ namespace PlayerNotifications
             _notificationTextBase.fontSize = 28;
         }
 
+        /// <summary>
+        /// Set and display a message on the Text object of this object.
+        /// Call SetNotifierLocation() to set its world location.
+        /// </summary>
+        /// <param name="m">Message to display on-screen</param>
         public void DisplayNotificationMessage(string m)
         {
             SetMessageAlpha(1f);
@@ -50,6 +54,8 @@ namespace PlayerNotifications
             // _notificationTextBase.enabled = true;
         }
 
+        // This function is used to set the initial location of the notification message and
+        // can be called on update functions to pin it to a target.
         public void SetNotifierLocation(float x, float y)
         {
             Vector3 transformPosition = _rectTransform.position;
