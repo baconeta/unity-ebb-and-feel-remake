@@ -117,7 +117,7 @@ namespace PlayerNotifications
 
         private float CalculateTimeToDisplay(string s)
         {
-            return s.Length / 10.0f + 2.0f;
+            return s.Length / 15.0f + 2.0f;
         }
 
         private void Update()

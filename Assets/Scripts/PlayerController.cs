@@ -198,6 +198,8 @@ public class PlayerController : MonoBehaviour
     private void ResetPlayer()
     {
         transform.position = _respawnLocation;
+        notificationController.DisplayNotificationMessage(
+            "I can't leave. I am just starting to feel again. Feel right. But I need to get out of here...", 1, false);
     }
 
     private void OnBecameVisible()
