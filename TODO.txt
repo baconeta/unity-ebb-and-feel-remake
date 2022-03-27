@@ -6,7 +6,7 @@ Show stats on final screen
 
 Fix WASD
 Fix landing on top of the trees.
-Landing after falling from breaking platforms sometimes forces the place to get stuck in "jumping" state until they die.
+Landing after falling from breaking platforms sometimes forces the place to get stuck in "jumping" state until they die. (breaking platforms do it when they are falling)
 Fix whacking into the sides of platforms (ever?)
 
 Add touch screen support

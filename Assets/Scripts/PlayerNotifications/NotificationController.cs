@@ -5,6 +5,7 @@
 // Remember to place a Notification controller in the world where this object is first going to appear if you have
 // persistBetweenScenes enabled, otherwise place it in every scene where you will use it.
 
+using System.Collections;
 using UnityEngine;
 
 namespace PlayerNotifications
@@ -14,7 +15,12 @@ namespace PlayerNotifications
         public PlayerNotifier playerNotificationObject;
         private bool _isMessageOnScreen;
         public bool doesMessageFollowController;
+
+        [Tooltip("Enable to save non-repeating messages between levels.")]
         public bool persistBetweenScenes;
+
+        public bool doMessagesFadeOut;
+        public float timeToFadeOutInSeconds;
 
         public void DisplayNotificationMessage(string m, float timeToDisplay = 0.0f)
         {
@@ -63,8 +69,22 @@ namespace PlayerNotifications
 
         private void ClearMessageFromScreen()
         {
+            playerNotificationObject.ClearMessage(doMessagesFadeOut, timeToFadeOutInSeconds);
+            if (doMessagesFadeOut)
+            {
+                StartCoroutine(DelayFade(timeToFadeOutInSeconds));
+                return;
+            }
+
             _isMessageOnScreen = false;
-            playerNotificationObject.ClearMessage();
+        }
+
+        private IEnumerator DelayFade(float delayTime)
+        {
+            //Wait for the specified delay time before continuing.
+            yield return new WaitForSeconds(delayTime);
+
+            _isMessageOnScreen = false;
         }
     }
 }

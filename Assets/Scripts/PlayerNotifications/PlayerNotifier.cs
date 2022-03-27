@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,6 +45,7 @@ namespace PlayerNotifications
 
         public void DisplayNotificationMessage(string m)
         {
+            SetMessageAlpha(1f);
             _notificationTextBase.text = m;
             // _notificationTextBase.enabled = true;
         }
@@ -55,9 +58,36 @@ namespace PlayerNotifications
             _rectTransform.position = transformPosition;
         }
 
-        public void ClearMessage()
+        public void ClearMessage(bool fadeMessageOut, float fadeMessageTime = 0.0f)
         {
-            _notificationTextBase.text = ""; 
+            // _notificationTextBase.text = "";
+            if (fadeMessageOut)
+            {
+                StartCoroutine(FadeOutMessage(fadeMessageTime));
+            }
+            else
+            {
+                _notificationTextBase.text = "";
+            }
+        }
+
+        private void SetMessageAlpha(float alpha)
+        {
+            Color color = _notificationTextBase.color;
+            color.a = alpha;
+            _notificationTextBase.color = color;
+        }
+
+        IEnumerator FadeOutMessage(float duration)
+        {
+            for (float t = 0f; t < duration; t += Time.deltaTime)
+            {
+                float normalizedTime = t / duration;
+                SetMessageAlpha(Mathf.Lerp(1, 0, normalizedTime));
+                yield return null;
+            }
+
+            _notificationTextBase.text = "";
         }
     }
 }

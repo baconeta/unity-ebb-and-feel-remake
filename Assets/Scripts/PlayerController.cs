@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             // Begin jumping
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                nc.DisplayNotificationMessage("testing 123", 5.0f);
+                nc.DisplayNotificationMessage("testing 123", 4.0f);
                 _moveVertical = Input.GetAxisRaw("Vertical");
             }
 

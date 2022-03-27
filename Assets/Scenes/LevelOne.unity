@@ -2457,6 +2457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNotificationObject: {fileID: 450019632}
   doesMessageFollowController: 1
+  persistBetweenScenes: 0
+  doesMessageFadeOut: 0
 --- !u!1001 &1203240434
 PrefabInstance:
   m_ObjectHideFlags: 0
