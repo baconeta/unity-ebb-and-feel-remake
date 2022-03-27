@@ -27,12 +27,10 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private bool _isWaitingToDie;
 
-    private NotificationController nc;
+    public NotificationController nc;
 
     private void Start()
     {
-        nc = GetComponentInChildren<NotificationController>();
-        
         _rB2D = gameObject.GetComponent<Rigidbody2D>();
         _gameSanityManager = FindObjectOfType<SanityManager>();
         _animationSoundPlayer = GetComponent<AudioSource>();
@@ -42,6 +40,10 @@ public class PlayerController : MonoBehaviour
         _anim = GetComponent<Animator>();
         _anim.SetBool(IsJumping, false);
         _anim.SetBool(IsRunning, false);
+        if (nc == null)
+        {
+            nc = FindObjectOfType<NotificationController>();
+        }
     }
 
     private void Update()
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour
             // Begin jumping
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                nc.DisplayNotificationMessage("testing 123", 1, true, 4.0f);
+                nc.DisplayNotificationMessage("testing 123", 1, false, 4.0f);
                 _moveVertical = Input.GetAxisRaw("Vertical");
             }
 

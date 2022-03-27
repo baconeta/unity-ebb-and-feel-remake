@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +16,16 @@ namespace PlayerNotifications
     {
         [Tooltip("Put the PlayerNotifier object into the world and reference it here.")]
         public PlayerNotifier playerNotificationObject;
+
+        public bool doesTrackAnObjectOrPlayer;
+
+        private GameObject _objectToFollow;
+
+        [Tooltip("Optional object to track position of, i.e. a character, for message displaying")]
+        public string tagToTrack;
+
+        [Tooltip("Offset for messages location from tracked player. Only used if doesTrackAnObjectOrPlayer.")]
+        public Vector3 messageOffsetLocation;
 
         [Tooltip(
             "Set whether the message will follow the controller on message shown or controller object moved." +
@@ -40,6 +49,8 @@ namespace PlayerNotifications
         [Tooltip("Default Font Size")] public int defaultFontSize;
 
         private bool _isMessageOnScreen;
+
+        [Tooltip("List of all played messages that should not be played again.")]
         private readonly List<string> _alreadyPlayedMessages = new List<string>();
 
         [Tooltip("The priority of the message currently being played. 0 if nothing is being played.")]
@@ -64,7 +75,7 @@ namespace PlayerNotifications
 
             if (!canMessageBeReplayed)
             {
-                if (_alreadyPlayedMessages.Contains(m))
+                if (HasMessageBeenPlayed(m))
                 {
                     return;
                 }
@@ -108,10 +119,33 @@ namespace PlayerNotifications
 
         private void Update()
         {
-            if (doesMessageFollowController && _isMessageOnScreen)
+            if (doesMessageFollowController)
             {
-                playerNotificationObject.SetNotifierLocation(transform.position.x, transform.position.y);
+                Transform currentTransform = transform;
+
+                if (doesTrackAnObjectOrPlayer && _objectToFollow == null)
+                {
+                    // For example, when a new scene loads or an object is destroyed
+                    _objectToFollow = GameObject.FindGameObjectWithTag(tagToTrack);
+                }
+
+                if (doesTrackAnObjectOrPlayer && _objectToFollow)
+                {
+                    MoveControllerToObject(currentTransform);
+                }
+
+                currentTransform.position += messageOffsetLocation;
+
+                playerNotificationObject.SetNotifierLocation(currentTransform.position.x, currentTransform.position.y);
             }
+        }
+
+        private void MoveControllerToObject(Transform currentTransform)
+        {
+            Vector3 transformPosition = currentTransform.position;
+            transformPosition.x = _objectToFollow.transform.position.x;
+            transformPosition.y = _objectToFollow.transform.position.y;
+            transform.position = transformPosition;
         }
 
         private void Awake()
@@ -187,6 +221,34 @@ namespace PlayerNotifications
             }
 
             return messagePriority <= _currentMessagePriority;
+        }
+
+        /// <summary>
+        /// Removes a single message from the played list so it could be played again.
+        /// </summary>
+        /// <param name="m">The message to be removed from the list.</param>
+        public void RemovePlayedMessage(string m)
+        {
+            _alreadyPlayedMessages.Remove(m);
+        }
+
+        /// <summary>
+        /// Returns true if the given message has been played before (only for non-repeatable messages).
+        /// </summary>
+        /// <param name="m">The message to check.</param>
+        /// <returns></returns>
+        // ReSharper disable once MemberCanBePrivate.Global
+        public bool HasMessageBeenPlayed(string m)
+        {
+            return _alreadyPlayedMessages.Contains(m);
+        }
+
+        /// <summary>
+        /// Removes all played messages so they can all be played again (non-repeatable messages only)
+        /// </summary>
+        public void RemoveAllPlayedMessages()
+        {
+            _alreadyPlayedMessages.Clear();
         }
     }
 }

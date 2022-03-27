@@ -20,6 +20,11 @@ namespace PlayerNotifications
             SetTextDefaults();
         }
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         private void ComponentSetup()
         {
             // Ensure component is set up to display text on the screen
@@ -97,7 +102,6 @@ namespace PlayerNotifications
         {
             SetMessageAlpha(_defaultAlphaValue);
             _notificationTextBase.text = m;
-            Debug.Log("new message.");
         }
 
         // This function is used to set the initial location of the notification message and
@@ -118,7 +122,6 @@ namespace PlayerNotifications
             }
             else
             {
-                Debug.Log("clear message");
                 _notificationTextBase.text = "";
             }
         }
@@ -140,7 +143,6 @@ namespace PlayerNotifications
                 yield return null;
             }
 
-            Debug.Log("clear message on fade call");
             _notificationTextBase.text = "";
         }
 
