@@ -8,6 +8,7 @@ namespace PlayerNotifications
         //Components and base setup
         private Text _notificationTextBase;
         private Canvas _displayCanvas;
+        private RectTransform _rectTransform;
 
         private void Start()
         {
@@ -17,16 +18,27 @@ namespace PlayerNotifications
 
             // Should this be enabled to be set manually as well? TODO
             _displayCanvas.worldCamera = FindObjectOfType<Camera>();
-            _displayCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+            _displayCanvas.renderMode = RenderMode.WorldSpace;
             _notificationTextBase.font = Font.CreateDynamicFontFromOSFont("LiberationSans", 20);
             _displayCanvas.sortingOrder = 5;
-            // DisplayNotificationMessage();
+
+            _rectTransform = gameObject.GetComponent<RectTransform>();
+
+            _notificationTextBase.alignment = TextAnchor.MiddleCenter;
         }
 
         public void DisplayNotificationMessage(string m)
         {
             _notificationTextBase.text = m;
             // _notificationTextBase.enabled = true;
+        }
+
+        public void SetNotifierLocation(float x, float y)
+        {
+            Vector3 transformPosition = _rectTransform.position;
+            transformPosition.x = x;
+            transformPosition.y = y;
+            _rectTransform.position = transformPosition;
         }
     }
 }
