@@ -1,16 +1,17 @@
-// This object will handle all functionality involving controlling the text on the screen.
-// It managers timers related to priority and fade outs on a message.
-// It should be attached to objects where you want the message to follow a player, and you must also
-// enable doesMessageFollowController from the editor.
-// Remember to place a Notification controller in the world where this object is first going to appear if you have
-// persistBetweenScenes enabled, otherwise place it in every scene where you will use it.
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerNotifications
 {
+    /// <summary>
+    /// This object will handle all functionality involving controlling the text on the screen.
+    /// It managers timers related to priority and fade outs on a message.
+    ///   It should be attached to objects where you want the message to follow a player, and you must also
+    /// enable doesMessageFollowController from the editor.
+    /// Remember to place a Notification controller in the world where this object is first going to appear if you have
+    /// persistBetweenScenes enabled, otherwise place it in every scene where you will use it.
+    /// </summary>
     public class NotificationController : MonoBehaviour
     {
         [Tooltip("Put the PlayerNotifier object into the world and reference it here.")]
@@ -32,8 +33,9 @@ namespace PlayerNotifications
 
         private bool _isMessageOnScreen;
 
-        private List<string> _alreadyPlayedMessages = new List<string>();
+        private readonly List<string> _alreadyPlayedMessages = new List<string>();
 
+        // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// Call this function (Broadcast or otherwise) to display a message in the world.
         /// </summary>
