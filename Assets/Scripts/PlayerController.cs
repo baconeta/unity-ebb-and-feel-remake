@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour
     private AudioSource _animationSoundPlayer;
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
+    private static readonly int IsDisabled = Animator.StringToHash("isInputDisabled");
     private bool _isWaitingToDie;
+    private bool _disableInput;
 
     public NotificationController notificationController;
 
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
         _anim = GetComponent<Animator>();
         _anim.SetBool(IsJumping, false);
         _anim.SetBool(IsRunning, false);
+        _anim.SetBool(IsDisabled, false);
         if (notificationController == null)
         {
             notificationController = FindObjectOfType<NotificationController>();
@@ -47,6 +50,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_disableInput)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
             if (isHoldingPotion)
@@ -119,6 +127,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_disableInput)
+        {
+            return;
+        }
+
         if (_moveHorizontal > 0.01f || _moveHorizontal < -0.01f)
         {
             _rB2D.AddForce(new Vector2(_moveHorizontal * moveSpeed, 0f), ForceMode2D.Impulse);
@@ -170,6 +183,14 @@ public class PlayerController : MonoBehaviour
             //Change respawn location
             _respawnLocation = col.gameObject.transform.position;
             Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.CompareTag("Finish"))
+        {
+            _disableInput = true;
+            _anim.SetBool(IsDisabled, true);
+            _anim.SetBool(IsRunning, false);
+            _anim.SetBool(IsJumping, false);
         }
     }
 
