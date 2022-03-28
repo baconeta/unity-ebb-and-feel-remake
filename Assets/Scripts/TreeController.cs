@@ -60,7 +60,7 @@ public class TreeController : MonoBehaviour
         {
             _nc.DisplayNotificationMessage(
                 "It seems this tree is really here. Is there a way past it? Around? It seems so.... normal.",
-                1, false);
+                2, false);
         }
     }
 }

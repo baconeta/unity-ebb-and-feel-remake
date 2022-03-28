@@ -1646,29 +1646,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d0b2bc29491194fabb9f7874991290, type: 3}
---- !u!1 &660681828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5209523940585522204, guid: 67a4c847ac3d8d7498011b0feeb85481, type: 3}
-  m_PrefabInstance: {fileID: 5209523940351540320}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &660681829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660681828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422c4ce109863704a8f2eb3f19f5e191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notificationController: {fileID: 0}
-  messageToPlay: default
-  delayTimeToPlay: 0
-  priority: 0
-  timeToDisplayMessage: 0
-  canMessageBeReplayed: 0
 --- !u!1001 &688288980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2136,7 +2113,7 @@ MonoBehaviour:
   messageToPlay: Emotions are hard. Nature is dying. Is this a dream or... something
     else?
   delayTimeToPlay: 1
-  priority: 1
+  priority: 2
   timeToDisplayMessage: 0
   canMessageBeReplayed: 0
 --- !u!1001 &915244393
