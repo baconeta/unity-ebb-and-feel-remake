@@ -10,6 +10,7 @@ public class NextLevel : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            col.gameObject.SetActive(false);
             Invoke(nameof(LoadNextLevel), delayBeforeLoadSeconds);
         }
     }

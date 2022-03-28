@@ -398,6 +398,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
+--- !u!1 &136669902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 853404082682523234, guid: f9ececc30ecd3d64d847c0abbc2b8269, type: 3}
+  m_PrefabInstance: {fileID: 1823615174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &136669903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434f9405d2d7d764081ec90056b6b7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationController: {fileID: 1627996028}
+  messageToPlay: What is sadness? Why is this place the way it is?
+  collisionObject: {fileID: 447501007}
+  priority: 1
+  timeToDisplayMessage: 5
+  canMessageBeReplayed: 0
 --- !u!1 &161703319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1255714611917528653, guid: fa2b87891466de2418c1ad6fdaf96425, type: 3}
@@ -1234,6 +1257,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00433064877055a4ebd8b61d884a65df, type: 3}
+--- !u!1 &550976130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 711235048179116313, guid: 00ed7e8d2c0e433438de2b83a6b28870, type: 3}
+  m_PrefabInstance: {fileID: 1676245220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &550976131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550976130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434f9405d2d7d764081ec90056b6b7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationController: {fileID: 1627996028}
+  messageToPlay: The world is a sad place. Everything is sad.
+  collisionObject: {fileID: 447501007}
+  priority: 1
+  timeToDisplayMessage: 0
+  canMessageBeReplayed: 0
 --- !u!1001 &559276708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4476,6 +4522,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 853404082682523230, guid: f9ececc30ecd3d64d847c0abbc2b8269, type: 3}
+      propertyPath: delayBeforeLoadSeconds
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 853404082682523232, guid: f9ececc30ecd3d64d847c0abbc2b8269, type: 3}
       propertyPath: m_RootOrder
       value: 26
