@@ -1,4 +1,5 @@
 using System.Collections;
+using PlayerNotifications;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,6 +23,8 @@ public class BreakingPlatform : MonoBehaviour
     private float _velocity;
     private bool _isFalling;
 
+    private NotificationController _nc;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -34,6 +37,7 @@ public class BreakingPlatform : MonoBehaviour
         _isBreaking = false;
         _isFalling = false;
         _velocity = 0;
+        _nc = FindObjectOfType<NotificationController>();
     }
 
     void FixedUpdate()
@@ -50,7 +54,7 @@ public class BreakingPlatform : MonoBehaviour
     private void StartBreaking()
     {
         _isBreaking = true;
-        
+
         // shake
         _cameraShakeClass.MakeItShake();
         Shake();
@@ -105,6 +109,7 @@ public class BreakingPlatform : MonoBehaviour
     private void PlatformFall()
     {
         _isFalling = true;
+        _nc.DisplayNotificationMessage("What is this place!?", 2, false, 3f);
     }
 
     private void RespawnPlatform()

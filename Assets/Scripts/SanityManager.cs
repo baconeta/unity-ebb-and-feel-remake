@@ -1,3 +1,4 @@
+using PlayerNotifications;
 using UnityEngine;
 
 public class SanityManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class SanityManager : MonoBehaviour
     public AudioClip goingSaneSound;
     public AudioClip goingInsaneSound;
     private AudioSource _sanityAudioSource;
+    private NotificationController _nc;
 
 
     private float _currentTimer;
@@ -35,6 +37,7 @@ public class SanityManager : MonoBehaviour
         currentSanity = startingSanity;
         _currentTimer = 0.0f;
         _sanityAudioSource = GetComponent<AudioSource>();
+        _nc = FindObjectOfType<NotificationController>();
     }
 
     // Update is called once per frame
@@ -67,7 +70,11 @@ public class SanityManager : MonoBehaviour
             {
                 _sanityAudioSource.PlayOneShot(goingSaneSound);
                 _hasPlayedGoingSaneSound = true;
+                _nc.DisplayNotificationMessage(
+                    "My emotions are still there, but I can see past them for the first time...",
+                    1, false);
             }
+
             _currentSanityLevel = SanityLevel.High;
         }
 
@@ -77,7 +84,11 @@ public class SanityManager : MonoBehaviour
             {
                 _sanityAudioSource.PlayOneShot(goingInsaneSound);
                 _hasPlayedGoingInsaneSound = true;
+                _nc.DisplayNotificationMessage(
+                    "My emotions are getting stronger... what's happening to this place?",
+                    1, false);
             }
+
             _currentSanityLevel = SanityLevel.Low;
         }
 

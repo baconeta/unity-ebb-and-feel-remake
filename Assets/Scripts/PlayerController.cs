@@ -148,6 +148,10 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.CompareTag("Enemy"))
         {
+            notificationController.notDisplayedMessagesCountAsPlayed = false;
+            notificationController.DisplayNotificationMessage(
+                "Okay so... these are... what are these? Am I going insane? Do they exist?", 2, false);
+            notificationController.notDisplayedMessagesCountAsPlayed = true;
             ResetPlayer();
         }
 
