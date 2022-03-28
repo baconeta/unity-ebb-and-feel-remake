@@ -1600,6 +1600,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d0b2bc29491194fabb9f7874991290, type: 3}
+--- !u!1 &660681828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5209523940585522204, guid: 67a4c847ac3d8d7498011b0feeb85481, type: 3}
+  m_PrefabInstance: {fileID: 5209523940351540320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &660681829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660681828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422c4ce109863704a8f2eb3f19f5e191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationController: {fileID: 0}
+  messageToPlay: default
+  delayTimeToPlay: 0
+  priority: 0
+  timeToDisplayMessage: 0
+  canMessageBeReplayed: 0
 --- !u!1001 &688288980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1933,6 +1956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 854210713}
   - component: {fileID: 854210712}
+  - component: {fileID: 854210714}
   m_Layer: 0
   m_Name: BackgroundAudio_Sadness
   m_TagString: Untagged
@@ -2050,6 +2074,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 77
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &854210714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854210711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422c4ce109863704a8f2eb3f19f5e191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationController: {fileID: 1627996028}
+  messageToPlay: Emotions are hard. Nature is dying. Is this a dream or... something
+    else?
+  delayTimeToPlay: 1
+  priority: 1
+  timeToDisplayMessage: 0
+  canMessageBeReplayed: 0
 --- !u!1001 &915244393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5525,15 +5568,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3284498088498705598, guid: c431acc972c1f46448263b16ea279169, type: 3}
       propertyPath: defaultMessageColor.b
-      value: 0.23389105
+      value: 0.15690637
       objectReference: {fileID: 0}
     - target: {fileID: 3284498088498705598, guid: c431acc972c1f46448263b16ea279169, type: 3}
       propertyPath: defaultMessageColor.g
-      value: 0.608645
+      value: 0.70707774
       objectReference: {fileID: 0}
     - target: {fileID: 3284498088498705598, guid: c431acc972c1f46448263b16ea279169, type: 3}
       propertyPath: defaultMessageColor.r
-      value: 0.6792453
+      value: 0.8113208
       objectReference: {fileID: 0}
     - target: {fileID: 3284498088498705598, guid: c431acc972c1f46448263b16ea279169, type: 3}
       propertyPath: messageOffsetLocation.y
