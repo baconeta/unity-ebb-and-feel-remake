@@ -109,7 +109,7 @@ public class BreakingPlatform : MonoBehaviour
     private void PlatformFall()
     {
         _isFalling = true;
-        _nc.DisplayNotificationMessage("What is this place!?", 2, false, 3f);
+        _nc.DisplayNotificationMessage("What is this place!?", 1, false, 3f);
     }
 
     private void RespawnPlatform()
