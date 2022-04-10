@@ -11,7 +11,7 @@ Ebb and Feel is a game produced for Ludum Dare #49 in 72 hours with a team of te
 
 
 ## Tools and dependencies
-- Unity game engine 2020.3.28f1
+- Unity 2020.3.28f1
 - [git LFS](https://git-lfs.github.com/)
 
 ## Links from original project
